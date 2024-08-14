@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Independence Day - Celebrate the Spirit of Freedom</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Join us in celebrating India's Independence Day with a stunning visual tribute. Enjoy fireworks, the waving flag, and more as we honor the spirit of freedom and unity.">
+    <meta name="keywords" content="Independence Day, India, August 15, Freedom, Unity, Celebration, Fireworks, Flag, Happy Independence Day">
+    <meta name="author" content="Your Name or Company Name">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Happy Independence Day - Celebrate the Spirit of Freedom">
+    <meta property="og:description" content="Join us in celebrating India's Independence Day with a stunning visual tribute. Enjoy fireworks, the waving flag, and more as we honor the spirit of freedom and unity.">
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourwebsite.com/independence-day">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Happy Independence Day - Celebrate the Spirit of Freedom">
+    <meta name="twitter:description" content="Join us in celebrating India's Independence Day with a stunning visual tribute. Enjoy fireworks, the waving flag, and more as we honor the spirit of freedom and unity.">
+    <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9933, #ffffff, #138808);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .flag {
+            width: 100px;
+            animation: wave 2s infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        h1 {
+            font-size: 4em;
+            animation: fadeIn 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+
+        .message {
+            font-size: 1.8em;
+            margin: 20px 0;
+            animation: slideIn 3s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .celebrate-btn {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: #ffffff;
+            background-color: #138808;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .celebrate-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.4);
+            background-color: #ff9933;
+        }
+
+        #confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Additional fireworks effect */
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: transparent;
+        }
+
+        @keyframes explosion {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: explosion 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png" alt="Indian Flag" class="flag">
+            <h1>Happy Independence Day</h1>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png" alt="Indian Flag" class="flag">
+        </div>
+        <p class="message">Celebrate the spirit of freedom and unity! Wishing you a joyful Independence Day!</p>
+        <button class="celebrate-btn" onclick="celebrate()">Celebrate</button>
+    </div>
+    <canvas id="confetti"></canvas>
+    <div class="fireworks"></div>
+    <script>
+        function celebrate() {
+            var canvas = document.getElementById("confetti");
+            var ctx = canvas.getContext("2d");
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            var confettiCount = 300;
+            var confetti = [];
+
+            for (var i = 0; i < confettiCount; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 2,
+                    d: Math.random() * confettiCount,
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    tilt: Math.random() * 10 - 10
+                });
+            }
+
+            function drawConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                confetti.forEach(c => {
+                    ctx.beginPath();
+                    ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2, false);
+                    ctx.fillStyle = c.color;
+                    ctx.fill();
+                    c.y += Math.cos(c.d) + 1 + c.r / 2;
+                    c.x += Math.sin(c.d);
+                    if (c.y > canvas.height) c.y = -c.r;
+                });
+            }
+
+            function update() {
+                drawConfetti();
+                requestAnimationFrame(update);
+            }
+
+            update();
+
+            // Fireworks effect
+            var fireworks = document.querySelector('.fireworks');
+            for (var i = 0; i < 30; i++) {
+                var firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = Math.random() * window.innerWidth + 'px';
+                firework.style.top = Math.random() * window.innerHeight + 'px';
+                firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                fireworks.appendChild(firework);
+                (function(firework) {
+                    setTimeout(function() {
+                        firework.remove();
+                    }, 1000);
+                })(firework);
+            }
+        }
+    </script>
+</body>
+</html>
